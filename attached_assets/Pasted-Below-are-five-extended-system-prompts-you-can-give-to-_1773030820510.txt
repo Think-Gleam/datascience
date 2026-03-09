@@ -1,0 +1,424 @@
+Below are five extended system prompts you can give to Replit AI Agent to progressively build a full LMS platform similar to major MOOC systems.
+ Each prompt is written as a software architecture + UI/UX specification so the agent generates structured code rather than a simple webpage.
+Use them one by one as phases while developing your platform.
+
+1️⃣ Prompt — Complete LMS Architecture (Like Major MOOC Platforms)
+Writing
+Build a full Learning Management System (LMS) architecture for an online education platform called:
+AI Data Science Academy
+The platform sells structured Data Science, Artificial Intelligence, and Machine Learning courses and specialization tracks.
+The architecture must be modular, scalable, and similar to professional online learning platforms.
+
+Technology Stack
+Frontend
+React
+TailwindCSS
+Vite
+Responsive design
+Backend
+Node.js
+Express.js
+Database
+PostgreSQL
+Authentication
+JWT authentication
+OAuth ready (Google login later)
+File Storage
+Cloud storage ready (S3 compatible)
+Video Delivery
+HLS streaming compatible
+Deployment ready for:
+Replit
+Docker
+Cloud hosting
+
+System Modules
+Design the system with the following modules.
+User System
+Course System
+Learning System
+Payment System
+Certification System
+Admin Management
+
+Database Schema
+Create structured tables.
+Users
+id
+name
+email
+password
+role (student/admin/instructor)
+created_at
+Courses
+id
+title
+description
+difficulty
+specialization_level
+instructor_id
+thumbnail
+duration
+Modules
+id
+course_id
+title
+order_number
+Lessons
+id
+module_id
+title
+video_url
+notes
+duration
+Assignments
+id
+lesson_id
+instructions
+submission_type
+Enrollments
+id
+user_id
+course_id
+progress
+status
+Certificates
+id
+user_id
+course_id
+certificate_url
+issued_date
+Payments
+id
+user_id
+course_id
+amount
+payment_status
+
+Website Core Pages
+Homepage
+Specializations
+Courses
+Course Details
+Student Dashboard
+Admin Panel
+Course Player
+Login / Signup
+
+System Capabilities
+User Registration and Login
+Course Enrollment
+Track Learning Progress
+Assignments and quizzes
+Certificate generation
+Course completion tracking
+Admin management tools
+
+UI/UX Design Requirements
+Modern technology university style
+Clean card-based layouts
+Glassmorphism elements
+Responsive mobile UI
+Fast loading pages
+Smooth transitions
+Typography:
+Inter / Poppins
+Icons:
+Heroicons
+
+Code Organization
+Frontend
+src/
+components/
+pages/
+layouts/
+hooks/
+api/
+Backend
+server/
+controllers/
+routes/
+models/
+middleware/
+
+Security
+Password hashing
+JWT authentication
+Protected routes
+Role based access control
+
+Final Goal
+Create a scalable LMS system architecture that can support:
+Thousands of students
+Hundreds of courses
+Multiple instructors
+Specialization programs
+
+2️⃣ Prompt — Student Dashboard UI
+Writing
+Create a modern student dashboard interface for the AI Data Science Academy LMS.
+The dashboard must feel like a professional online learning portal.
+
+Layout
+Left Sidebar Navigation
+Dashboard
+My Courses
+Specializations
+Assignments
+Certificates
+Resources
+Settings
+Top Navigation Bar
+User profile
+Notifications
+Search courses
+Progress overview
+
+Dashboard Overview Section
+Display student statistics.
+Courses Enrolled
+Courses Completed
+Certificates Earned
+Learning Hours
+Use analytics cards with icons.
+
+Continue Learning Section
+Display current courses.
+Each course card must include:
+Course thumbnail
+Course title
+Instructor
+Progress bar
+Resume Learning button
+
+Learning Progress
+Visual progress indicators:
+Course completion bars
+Weekly learning activity chart
+Module completion tracker
+
+Upcoming Tasks
+Assignments due
+Quizzes pending
+Project deadlines
+Display in a task list card UI.
+
+Achievements Section
+Display earned certificates and milestones.
+Course badges
+Completion medals
+Certificates
+
+UI Design
+Modern tech platform style.
+Glassmorphism cards
+Subtle shadows
+Smooth hover animations
+Dark + light theme support.
+
+Mobile Optimization
+Responsive sidebar
+Collapsible menu
+Touch friendly buttons
+
+Goal
+Build a clean, engaging student dashboard that motivates learning and tracks progress effectively.
+
+3️⃣ Prompt — Course Video Learning Interface
+Writing
+Build a course video learning interface similar to professional MOOC platforms.
+This page is where students watch lectures and complete course modules.
+
+Layout
+Left Panel
+Course curriculum tree.
+Module list
+Lesson list
+Current lesson highlight
+Right Panel
+Video player
+Lesson content
+Notes
+Resources
+
+Video Player
+Features required:
+Play / pause
+Playback speed control
+Full screen
+Video quality selection
+Subtitles support
+Use HTML5 video player.
+
+Lesson Content Area
+Below the video include:
+Lesson description
+Code examples
+Downloadable files
+Datasets
+
+Tabs Section
+Notes
+Discussion
+Resources
+Assignments
+
+Progress Tracking
+Automatically track:
+Video watched percentage
+Lesson completion
+Module completion
+Show progress bar at top.
+
+Navigation
+Buttons:
+Previous Lesson
+Next Lesson
+Mark as Completed
+
+Interactive Features
+Bookmark timestamp
+Student notes
+Discussion comments
+
+UI Design
+Focused learning interface
+Minimal distractions
+Readable typography
+Large video area
+
+Goal
+Create a smooth course consumption experience optimized for long study sessions.
+
+4️⃣ Prompt — Admin Panel for Uploading Courses
+Writing
+Create an Admin Control Panel for managing the LMS platform.
+Only administrators and instructors should access this area.
+
+Admin Dashboard
+Display platform analytics:
+Total students
+Active enrollments
+Revenue
+Courses published
+Charts:
+Student growth
+Revenue trends
+Course popularity
+
+Course Management
+Admin must be able to:
+Create new course
+Edit course
+Delete course
+Publish course
+Course fields:
+Title
+Description
+Difficulty level
+Specialization level
+Thumbnail
+Instructor
+
+Module Manager
+Admin can create:
+Course modules
+Lesson ordering
+Drag and drop ordering.
+
+Lesson Manager
+Each lesson must support:
+Video upload
+Text content
+Attachments
+Coding notebooks
+
+Assignment Builder
+Admins create:
+Quizzes
+Coding exercises
+Projects
+Include grading system.
+
+User Management
+View users
+Promote instructors
+Suspend accounts
+
+UI Design
+Professional admin interface.
+Sidebar navigation
+Tables for data
+Forms for editing
+
+Security
+Admin authentication required
+Role-based permissions
+
+Goal
+Provide a complete academic management system for course creation and monitoring.
+
+5️⃣ Prompt — Payment + Certificates System
+Writing
+Add a payment and certification system to the LMS platform.
+This system enables students to purchase courses and receive certificates after completion.
+
+Payment System
+Support payments for:
+Individual courses
+Specialization bundles
+Integrate payment gateways:
+Stripe
+PayPal
+Future support:
+Regional payment methods
+
+Payment Workflow
+Student selects course
+Clicks enroll
+Payment page appears
+Payment processed
+Enrollment activated
+
+Payment Database Fields
+Payment ID
+User ID
+Course ID
+Amount
+Currency
+Payment status
+Transaction date
+
+Certificates System
+Automatically issue certificate when:
+Course progress = 100%
+Final assessment passed
+
+Certificate Design
+Professional academic certificate.
+Include:
+Student name
+Course title
+Instructor name
+Completion date
+Certificate ID
+QR verification code
+
+Certificate Features
+Download PDF
+Share on LinkedIn
+Verify certificate via public link
+
+Verification Page
+Public page to verify certificate.
+Enter certificate ID
+Display student name and course.
+
+Security
+Unique certificate IDs
+Prevent duplicate generation
+Verification API
+
+Goal
+Build a secure monetization and certification system for the LMS platform.
+

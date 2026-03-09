@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "./theme-provider";
-import { Menu, Sun, Moon, GraduationCap } from "lucide-react";
+import { Menu, Sun, Moon, GraduationCap, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Courses", href: "#courses" },
   { label: "Study Scheme", href: "#study-scheme" },
   { label: "Resources", href: "#resources" },
+  { label: "About", href: "#about" },
 ];
 
 export default function Navbar() {
@@ -41,13 +42,13 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-md bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
             <GraduationCap className="w-5 h-5 text-white" />
           </div>
-          <span className={`${scrolled ? "" : "text-white"}`}>
+          <span className={scrolled ? "" : "text-white"}>
             <span className="hidden sm:inline">AI Data Science Academy</span>
             <span className="sm:hidden">AI DSA</span>
           </span>
         </a>
 
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -96,26 +97,41 @@ export default function Navbar() {
               <Button
                 size="icon"
                 variant="ghost"
-                className={`lg:hidden ${scrolled ? "" : "text-white"}`}
+                className={`xl:hidden ${scrolled ? "" : "text-white"}`}
                 data-testid="button-mobile-menu"
               >
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <div className="flex flex-col gap-1 mt-8">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="px-4 py-2.5 text-sm font-medium text-muted-foreground rounded-md hover-elevate"
-                    data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <div className="flex flex-col gap-2 pt-4 mt-4 border-t">
+            <SheetContent side="right" className="w-80 p-0">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-md bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
+                      <GraduationCap className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="font-display font-bold">AI DSA</span>
+                  </div>
+                  <Button size="icon" variant="ghost" onClick={() => setOpen(false)} data-testid="button-close-menu">
+                    <X className="w-5 h-5" />
+                  </Button>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="px-4 py-3 text-sm font-medium text-muted-foreground rounded-md hover-elevate"
+                      data-testid={`mobile-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-2 pt-6 mt-6 border-t">
                   <Button variant="ghost" data-testid="mobile-button-login">
                     Log In
                   </Button>

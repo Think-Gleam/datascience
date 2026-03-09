@@ -1,0 +1,194 @@
+AI Data Science Academy
+The website must look like a modern technology university platform similar to Coursera, DeepLearning.ai, or MIT course websites.
+Use clean UI/UX, professional layout, and real icons/logos instead of emojis.
+
+Core Technical Requirements
+Frontend Stack:
+HTML5
+TailwindCSS
+JavaScript
+Responsive Design
+Mobile First
+Optional Enhancements:
+React (if necessary)
+Alpine.js for small interactions
+Performance Requirements:
+Fast loading
+Optimized images
+Minimal JavaScript
+Smooth scrolling
+Design Style:
+Dark + light professional tech theme
+Glassmorphism cards
+Gradient highlights
+Professional icons (Heroicons / FontAwesome)
+Clean typography
+Fonts:
+Inter
+Poppins
+Color Palette:
+Primary: Deep Blue (#0F172A)
+Secondary: Tech Purple (#6366F1)
+Accent: Cyan (#06B6D4)
+Background: Light gray / white
+
+Website Structure
+Create the following sections/pages.
+
+1. Homepage
+Hero Section
+Title: "Master Data Science, Artificial Intelligence & Machine Learning"
+Subtitle explaining the specialization pathway
+CTA Buttons:
+Explore Courses
+Start Learning
+Visual:
+AI / Data science themed illustration
+Background gradient
+
+2. Specialization Program Section
+Display the 5 Level Data Science Specialization Path
+Create cards for:
+Bronze Level
+Data Science Foundations
+Silver Level
+Data Analysis & Statistical Modeling
+Gold Level
+Machine Learning Practitioner
+Platinum Level
+Advanced AI & Deep Learning
+Diamond Level
+AI Engineering & Production Systems
+Each card should contain:
+Level badge
+Description
+Skills learned
+Estimated duration
+Button: "View Courses"
+Cards must be responsive grid layout.
+
+3. Courses Section
+Show individual course cards with:
+Course Name
+Instructor
+Difficulty Level
+Duration
+Rating
+Enroll Button
+Each course card must include:
+Thumbnail image
+Course category tag
+Clean card layout
+
+4. Study Scheme Section
+Explain how students learn.
+Include:
+Learning Path
+Course Modules
+Assignments
+Projects
+Examinations
+Certification
+Use a timeline or step diagram UI.
+
+5. Evaluation & Passing Criteria
+Create a section explaining academic evaluation:
+Assignments 20%
+Projects 30%
+Quizzes 20%
+Final Assessment 30%
+Display this using a modern visual progress chart or infographic layout.
+
+6. Study Modes
+Display learning formats:
+Self-Paced Learning
+Instructor Guided
+Project Based Learning
+Certification Track
+Use icon cards for each mode.
+
+7. Resources Section
+Show available learning resources:
+Video Lectures
+Coding Notebooks
+Datasets
+Research Papers
+Discussion Forum
+Community
+
+8. Testimonials
+Student success stories with profile photos.
+
+9. Call to Action
+"Start Your Data Science Journey Today"
+Buttons:
+Enroll Now
+View Curriculum
+
+10. Footer
+Include:
+Navigation links
+About
+Courses
+Specializations
+Contact
+Privacy Policy
+Social Media Icons
+
+Navigation Bar
+Sticky top navigation.
+Logo: AI Data Science Academy
+Menu:
+Home
+Specializations
+Courses
+Study Scheme
+Resources
+About
+Login / Sign Up
+
+UI/UX Requirements
+Mobile responsive
+Smooth scrolling
+Modern hover animations
+Card hover elevation
+Clean typography hierarchy
+Clear spacing and padding
+No emojis — use professional SVG icons.
+
+Visual Assets
+Use:
+Heroicons
+FontAwesome
+Unsplash tech images
+AI / Data Science illustrations
+
+File Structure
+Create organized project structure.
+index.html
+styles.css
+scripts.js
+assets/
+images/
+icons/
+components/
+course-cards
+specialization-cards
+
+Future Expansion Preparation
+Structure code so it can later support:
+Student dashboard
+Course player
+Authentication
+Payment gateway
+Certificates
+Progress tracking
+Admin panel
+
+Final Result
+The website should feel like a premium AI university platform with:
+Smooth navigation
+Professional course cards
+Structured learning pathways
+Modern technology design
+Fully responsive interface
