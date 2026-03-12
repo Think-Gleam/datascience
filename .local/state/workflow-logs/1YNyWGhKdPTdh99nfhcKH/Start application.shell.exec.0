@@ -1,0 +1,86 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0KSeeding database...
+Database seeded successfully!
+4:46:21 AM [express] serving on port 5000
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+4:46:27 AM [express] GET /api/auth/me 401 in 2ms :: {"message":"Not authenticated"}
+4:46:33 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+4:46:38 AM [express] GET /api/courses 200 in 13ms :: [{"id":1,"title":"Introduction to Python for Data Science","description":"Master Python programming from the ground up, specifically tailored for data science applications. Learn essential libraries like NumPy, Pandas, and Matplotlib while building real-world data analysis projects.","shortDescription":"Learn Python for data analysis with NumPy, Pandas, and Matplotlib.","difficulty":"Beginner","specializationLevel":"Bronze","instructorId":null,"instructorName":"Dr. Sarah Chen","thumbnail":null,"duration":"8 weeks","category":"Programming","gradient":"from-blue-600 to-indigo-700","rating":4.8,"reviewCount":2340,"studentCount":12500,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"},{"id":2,"title":"Statistical Analysis & Probability","description":"Dive deep into statistical methods essential for data science. Cover probability theory, distributions, hypothesis testing, regression analysis, and Bayesian statistics with practical Python implementations.","shortDescription":"Master statistics and probability for data-driven decision making.","difficulty":"Beginner","specializationLevel":"Bronze","instructorId":null,"instructorName":"Prof. Michael Torres","thumbnail":null,"duration":"10 weeks","category":"Statistics","gradient":"from-emerald-600 to-teal-700","rating":4.7,"reviewCount":1850,"studentCount":9800,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"},{"id":3,"title":"Machine Learning Fundamentals","description":"Learn the core algorithms and techniques of machine learning. From linear regression to ensemble methods, build a strong foundation in supervised and unsupervised learning with scikit-learn.","shortDescription":"Core ML algorithms: regression, classification, clustering, and more.","difficulty":"Intermediate","specializationLevel":"Gold","instructorId":null,"instructorName":"Dr. Emily Zhang","thumbnail":null,"duration":"12 weeks","category":"Machine Learning","gradient":"from-purple-600 to-pink-700","rating":4.9,"reviewCount":3120,"studentCount":15200,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"},{"id":4,"title":"Deep Learning with TensorFlow","description":"Build and train neural networks using TensorFlow and Keras. Cover CNNs, RNNs, transformers, and generative models while working on computer vision and sequence modeling projects.","shortDescription":"Neural networks, CNNs, RNNs, and transformers with TensorFlow.","difficulty":"Advanced","specializationLevel":"Platinum","instructorId":null,"instructorName":"Dr. James Wilson","thumbnail":null,"duration":"14 weeks","category":"Deep Learning","gradient":"from-orange-500 to-red-600","rating":4.8,"reviewCount":2780,"studentCount":11300,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"},{"id":5,"title":"Natural Language Processing","description":"Master text processing, sentiment analysis, named entity recognition, and build modern NLP applications using transformers, BERT, and GPT architectures.","shortDescription":"Text analysis, transformers, BERT, and modern NLP applications.","difficulty":"Advanced","specializationLevel":"Platinum","instructorId":null,"instructorName":"Dr. Aisha Patel","thumbnail":null,"duration":"12 weeks","category":"NLP","gradient":"from-cyan-600 to-blue-700","rating":4.6,"reviewCount":1560,"studentCount":7400,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"},{"id":6,"title":"MLOps & Production AI Systems","description":"Learn to deploy, monitor, and maintain machine learning models in production. Cover Docker, Kubernetes, CI/CD pipelines, model versioning, and scalable ML infrastructure.","shortDescription":"Deploy and maintain ML models in production environments.","difficulty":"Expert","specializationLevel":"Diamond","instructorId":null,"instructorName":"Dr. David Kim","thumbnail":null,"duration":"10 weeks","category":"MLOps","gradient":"from-slate-600 to-zinc-700","rating":4.9,"reviewCount":980,"studentCount":4200,"published":true,"createdAt":"2026-03-09T04:46:21.145Z"}]
+4:46:44 AM [express] POST /api/auth/login 200 in 70ms :: {"id":5,"name":"Test Student","email":"student@test.com","role":"student","avatarInitials":"TS","createdAt":"2026-03-09T04:46:21.140Z"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m4:48:53 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/course-player.tsx, /src/index.css[22m
+4:49:34 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m4:49:47 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/course-player.tsx, /src/index.css[22m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m4:49:53 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/courses.tsx, /src/index.css[22m
