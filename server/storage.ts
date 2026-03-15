@@ -20,7 +20,7 @@ import {
   certificates,
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, and, asc, desc, sql, count } from "drizzle-orm";
+import { eq, inArray, and, asc, desc, sql, count } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -159,12 +159,14 @@ export class DatabaseStorage implements IStorage {
 
   async getLessonsByCourse(courseId: number): Promise<Lesson[]> {
     const mods = await this.getModules(courseId);
-    const allLessons: Lesson[] = [];
-    for (const mod of mods) {
-      const modLessons = await this.getLessons(mod.id);
-      allLessons.push(...modLessons);
-    }
-    return allLessons;
+    if (mods.length === 0) return [];
+
+    const moduleIds = mods.map(m => m.id);
+    return db
+      .select()
+      .from(lessons)
+      .where(inArray(lessons.moduleId, moduleIds))
+      .orderBy(asc(lessons.orderNumber));
   }
 
   async createLesson(lesson: InsertLesson): Promise<Lesson> {
