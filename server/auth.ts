@@ -17,7 +17,10 @@ async function hashPassword(password: string): Promise<string> {
   return `${buf.toString("hex")}.${salt}`;
 }
 
-async function comparePasswords(supplied: string, stored: string): Promise<boolean> {
+async function comparePasswords(
+  supplied: string,
+  stored: string,
+): Promise<boolean> {
   const [hashed, salt] = stored.split(".");
   const buf = (await scryptAsync(supplied, salt, 64)) as Buffer;
   return timingSafeEqual(Buffer.from(hashed, "hex"), buf);
@@ -51,10 +54,10 @@ export function setupAuth(app: Express) {
       cookie: {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        secure: false,
+        secure: process.env.NODE_ENV === "production",
         sameSite: "lax",
       },
-    })
+    }),
   );
 
   app.use(passport.initialize());
@@ -77,8 +80,8 @@ export function setupAuth(app: Express) {
         } catch (err) {
           return done(err);
         }
-      }
-    )
+      },
+    ),
   );
 
   passport.serializeUser((user, done) => {
@@ -100,10 +103,14 @@ export function setupAuth(app: Express) {
     try {
       const { name, email, password } = req.body;
       if (!name || !email || !password) {
-        return res.status(400).json({ message: "Name, email, and password are required" });
+        return res
+          .status(400)
+          .json({ message: "Name, email, and password are required" });
       }
       if (password.length < 6) {
-        return res.status(400).json({ message: "Password must be at least 6 characters" });
+        return res
+          .status(400)
+          .json({ message: "Password must be at least 6 characters" });
       }
 
       const existing = await storage.getUserByEmail(email);
@@ -130,17 +137,22 @@ export function setupAuth(app: Express) {
   });
 
   app.post("/api/auth/login", (req, res, next) => {
-    passport.authenticate("local", (err: any, user: User | false, info: any) => {
-      if (err) return next(err);
-      if (!user) {
-        return res.status(401).json({ message: info?.message || "Login failed" });
-      }
-      req.login(user, (err) => {
+    passport.authenticate(
+      "local",
+      (err: any, user: User | false, info: any) => {
         if (err) return next(err);
-        const { password, ...safeUser } = user;
-        res.json(safeUser);
-      });
-    })(req, res, next);
+        if (!user) {
+          return res
+            .status(401)
+            .json({ message: info?.message || "Login failed" });
+        }
+        req.login(user, (err) => {
+          if (err) return next(err);
+          const { password, ...safeUser } = user;
+          res.json(safeUser);
+        });
+      },
+    )(req, res, next);
   });
 
   app.post("/api/auth/logout", (req, res) => {
