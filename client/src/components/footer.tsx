@@ -1,5 +1,5 @@
 import { GraduationCap, Mail, MapPin, Phone } from "lucide-react";
-import { SiGithub, SiLinkedin, SiYoutube, SiX } from "react-icons/si";
+import { FaGithub, FaLinkedin, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const footerLinks = {
   Platform: [
@@ -30,10 +30,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: SiX, label: "X" },
-  { icon: SiLinkedin, label: "LinkedIn" },
-  { icon: SiGithub, label: "GitHub" },
-  { icon: SiYoutube, label: "YouTube" },
+  { icon: FaTwitter, label: "X" },
+  { icon: FaLinkedin, label: "LinkedIn" },
+  { icon: FaGithub, label: "GitHub" },
+  { icon: FaYoutube, label: "YouTube" },
 ];
 
 export default function Footer() {
@@ -109,17 +109,26 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <p data-testid="text-copyright">
-            &copy; {new Date().getFullYear()} AI Data Science Academy. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} AI Data Science Academy. All
+            rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover-elevate inline-block rounded-sm px-1 -mx-1">
+            <a
+              href="#"
+              className="hover-elevate inline-block rounded-sm px-1 -mx-1"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="hover-elevate inline-block rounded-sm px-1 -mx-1">
+            <a
+              href="#"
+              className="hover-elevate inline-block rounded-sm px-1 -mx-1"
+            >
               Terms of Service
             </a>
-            <a href="#" className="hover-elevate inline-block rounded-sm px-1 -mx-1">
+            <a
+              href="#"
+              className="hover-elevate inline-block rounded-sm px-1 -mx-1"
+            >
               Cookie Policy
             </a>
           </div>
