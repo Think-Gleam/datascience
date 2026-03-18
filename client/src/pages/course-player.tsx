@@ -110,7 +110,7 @@ export default function CoursePlayer() {
     <div className="min-h-screen bg-background flex flex-col">
       <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b h-14 flex items-center px-4 gap-4 shrink-0">
         <Link href={`/course/${id}`}>
-          <Button variant="ghost" size="icon" data-testid="button-back-to-course">
+          <Button variant="ghost" size="icon" data-testid="button-back-to-course" aria-label="Back to course">
             <ArrowLeft className="w-4 h-4" />
           </Button>
         </Link>
