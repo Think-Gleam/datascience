@@ -47,20 +47,30 @@ export default function CoursePlayer() {
       return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/enrollments", id, "progress"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/enrollments", id, "lesson-progress"] });
+      queryClient.invalidateQueries({
+        queryKey: ["/api/enrollments", id, "progress"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["/api/enrollments", id, "lesson-progress"],
+      });
       queryClient.invalidateQueries({ queryKey: ["/api/enrollments"] });
       queryClient.invalidateQueries({ queryKey: ["/api/certificates"] });
       toast({ title: "Lesson completed!" });
     },
     onError: (error: Error) => {
-      toast({ title: "Error", description: error.message, variant: "destructive" });
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
     },
   });
 
-  const allLessons = course?.modules?.flatMap((mod: any) =>
-    mod.lessons?.map((l: any) => ({ ...l, moduleName: mod.title })) ?? []
-  ) ?? [];
+  const allLessons =
+    course?.modules?.flatMap(
+      (mod: any) =>
+        mod.lessons?.map((l: any) => ({ ...l, moduleName: mod.title })) ?? [],
+    ) ?? [];
 
   useEffect(() => {
     if (allLessons.length > 0 && !currentLessonId) {
@@ -95,14 +105,21 @@ export default function CoursePlayer() {
   }
 
   const completedLessonIds = new Set(
-    (lessonProgressList ?? []).filter((lp: any) => lp.completed).map((lp: any) => lp.lessonId)
+    (lessonProgressList ?? [])
+      .filter((lp: any) => lp.completed)
+      .map((lp: any) => lp.lessonId),
   );
 
   const currentLesson = allLessons.find((l: any) => l.id === currentLessonId);
-  const currentIndex = allLessons.findIndex((l: any) => l.id === currentLessonId);
+  const currentIndex = allLessons.findIndex(
+    (l: any) => l.id === currentLessonId,
+  );
   const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
-  const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
-  const isCurrentCompleted = currentLessonId ? completedLessonIds.has(currentLessonId) : false;
+  const nextLesson =
+    currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
+  const isCurrentCompleted = currentLessonId
+    ? completedLessonIds.has(currentLessonId)
+    : false;
 
   const progressPercentage = progressData?.percentage ?? 0;
 
@@ -110,7 +127,12 @@ export default function CoursePlayer() {
     <div className="min-h-screen bg-background flex flex-col">
       <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b h-14 flex items-center px-4 gap-4 shrink-0">
         <Link href={`/course/${id}`}>
-          <Button variant="ghost" size="icon" data-testid="button-back-to-course">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Back to course"
+            data-testid="button-back-to-course"
+          >
             <ArrowLeft className="w-4 h-4" />
           </Button>
         </Link>
@@ -118,7 +140,10 @@ export default function CoursePlayer() {
           <div className="w-7 h-7 rounded-md bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shrink-0">
             <GraduationCap className="w-4 h-4 text-white" />
           </div>
-          <span className="font-display font-semibold text-sm truncate" data-testid="text-player-course-title">
+          <span
+            className="font-display font-semibold text-sm truncate"
+            data-testid="text-player-course-title"
+          >
             {course.title}
           </span>
         </div>
@@ -126,7 +151,10 @@ export default function CoursePlayer() {
           <span className="text-xs text-muted-foreground hidden sm:inline">
             {progressPercentage}% complete
           </span>
-          <Progress value={progressPercentage} className="w-24 h-1.5 hidden sm:block" />
+          <Progress
+            value={progressPercentage}
+            className="w-24 h-1.5 hidden sm:block"
+          />
         </div>
       </header>
 
@@ -191,15 +219,23 @@ export default function CoursePlayer() {
                 <Badge variant="secondary" className="mb-3">
                   {currentLesson.moduleName}
                 </Badge>
-                <h1 className="text-2xl font-display font-bold mb-2" data-testid="text-lesson-title">
+                <h1
+                  className="text-2xl font-display font-bold mb-2"
+                  data-testid="text-lesson-title"
+                >
                   {currentLesson.title}
                 </h1>
                 <div className="flex items-center gap-3">
                   {currentLesson.duration && (
-                    <span className="text-sm text-muted-foreground">{currentLesson.duration}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {currentLesson.duration}
+                    </span>
                   )}
                   {isCurrentCompleted && (
-                    <Badge variant="secondary" className="text-emerald-600 bg-emerald-500/10">
+                    <Badge
+                      variant="secondary"
+                      className="text-emerald-600 bg-emerald-500/10"
+                    >
                       <CheckCircle2 className="w-3 h-3 mr-1" /> Completed
                     </Badge>
                   )}
@@ -208,13 +244,17 @@ export default function CoursePlayer() {
 
               <Card className="mb-6">
                 <CardContent className="p-0">
-                  <div className={`aspect-video bg-gradient-to-br ${course.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  <div
+                    className={`aspect-video bg-gradient-to-br ${course.gradient} flex items-center justify-center relative overflow-hidden`}
+                  >
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
                     <div className="relative z-10 text-center">
                       <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 border border-white/20">
                         <Play className="w-7 h-7 text-white ml-1" />
                       </div>
-                      <p className="text-white/70 text-sm">Video content placeholder</p>
+                      <p className="text-white/70 text-sm">
+                        Video content placeholder
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -222,9 +262,14 @@ export default function CoursePlayer() {
 
               <Card className="mb-6">
                 <CardContent className="p-6">
-                  <h2 className="font-display font-semibold text-lg mb-3">Lesson Content</h2>
+                  <h2 className="font-display font-semibold text-lg mb-3">
+                    Lesson Content
+                  </h2>
                   <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
-                    <p>{currentLesson.content || "Lesson content will be available here."}</p>
+                    <p>
+                      {currentLesson.content ||
+                        "Lesson content will be available here."}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -244,8 +289,12 @@ export default function CoursePlayer() {
                 </div>
 
                 <Button
-                  onClick={() => completeLessonMutation.mutate(currentLessonId!)}
-                  disabled={completeLessonMutation.isPending || isCurrentCompleted}
+                  onClick={() =>
+                    completeLessonMutation.mutate(currentLessonId!)
+                  }
+                  disabled={
+                    completeLessonMutation.isPending || isCurrentCompleted
+                  }
                   variant={isCurrentCompleted ? "secondary" : "default"}
                   data-testid="button-mark-complete"
                 >
