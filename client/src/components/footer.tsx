@@ -1,5 +1,6 @@
 import { GraduationCap, Mail, MapPin, Phone } from "lucide-react";
-import { SiGithub, SiLinkedin, SiYoutube, SiX } from "react-icons/si";
+import { SiGithub, SiLinktree, SiYoutube, SiX } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 
 const footerLinks = {
   Platform: [
@@ -31,7 +32,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: SiX, label: "X" },
-  { icon: SiLinkedin, label: "LinkedIn" },
+  { icon: FaLinkedin, label: "LinkedIn" },
   { icon: SiGithub, label: "GitHub" },
   { icon: SiYoutube, label: "YouTube" },
 ];
