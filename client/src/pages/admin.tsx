@@ -352,6 +352,7 @@ export default function AdminPanel() {
                                   setCourseDialogOpen(true);
                                 }}
                                 data-testid={`button-edit-course-${course.id}`}
+                                aria-label="Edit course"
                               >
                                 <Pencil className="w-4 h-4" />
                               </Button>
@@ -364,6 +365,7 @@ export default function AdminPanel() {
                                   }
                                 }}
                                 data-testid={`button-delete-course-${course.id}`}
+                                aria-label="Delete course"
                               >
                                 <Trash2 className="w-4 h-4 text-destructive" />
                               </Button>
