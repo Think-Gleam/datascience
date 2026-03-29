@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing ARIA Labels on Icon-Only Buttons
+**Learning:** Icon-only buttons (like those often used in toolbars, menus, or using `size="icon"` from UI libraries like shadcn/ui) frequently lack accessible names, making them invisible or confusing to screen reader users. The `sr-only` class is helpful for visually hidden text, but adding `aria-label` directly on the button is a robust and common way to fix this.
+**Action:** When adding or reviewing icon-only buttons (`<Button size="icon">`), always ensure an `aria-label` attribute is included describing the action (e.g., "Toggle Sidebar", "Close menu", "Edit course").
