@@ -1,0 +1,3 @@
+## 2024-03-30 - Add Accessible Names to Global Icon-Only Buttons
+**Learning:** In reusable global components like the Navbar, icon-only buttons (like theme toggles or mobile menus) often lack textual context, posing a significant accessibility barrier. Because these components appear on every page, a missing accessible name severely degrades screen reader usability across the entire app.
+**Action:** Always verify that `<Button size="icon">` or similar icon-only interactive elements explicitly define an `aria-label` that describes their action, especially in ubiquitous navigation components.
