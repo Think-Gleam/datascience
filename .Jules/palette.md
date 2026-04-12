@@ -1,0 +1,3 @@
+## 2026-04-12 - [Accessible Icon-Only Buttons]
+**Learning:** [Icon-only buttons (like those using `lucide-react` icons inside `<Button size="icon">`) lack context for screen readers when they don't contain visible text. Adding an `aria-label` is required to communicate their purpose to assistive technologies.]
+**Action:** [Always ensure any button containing only an icon has a clear, descriptive `aria-label` attribute applied to guarantee screen reader accessibility.]
