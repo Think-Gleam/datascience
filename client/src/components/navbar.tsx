@@ -4,7 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "./theme-provider";
 import { useAuth } from "@/hooks/use-auth";
-import { Menu, Sun, Moon, GraduationCap, X, LayoutDashboard, LogOut } from "lucide-react";
+import {
+  Menu,
+  Sun,
+  Moon,
+  GraduationCap,
+  X,
+  LayoutDashboard,
+  LogOut,
+} from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const navLinks = [
@@ -53,13 +61,15 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden xl:flex items-center gap-0.5">
-          {navLinks.map((link) => (
+          {navLinks.map((link) =>
             link.href.startsWith("#") ? (
               <a
                 key={link.href}
                 href={link.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md hover-elevate ${
-                  scrolled || !isHome ? "text-muted-foreground" : "text-slate-300"
+                  scrolled || !isHome
+                    ? "text-muted-foreground"
+                    : "text-slate-300"
                 }`}
                 data-testid={`link-${link.label.toLowerCase()}`}
               >
@@ -70,14 +80,16 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md hover-elevate ${
-                  scrolled || !isHome ? "text-muted-foreground" : "text-slate-300"
+                  scrolled || !isHome
+                    ? "text-muted-foreground"
+                    : "text-slate-300"
                 }`}
                 data-testid={`link-${link.label.toLowerCase()}`}
               >
                 {link.label}
               </Link>
-            )
-          ))}
+            ),
+          )}
         </div>
 
         <div className="flex items-center gap-2">
@@ -98,13 +110,20 @@ export default function Navbar() {
           {user ? (
             <div className="hidden sm:flex items-center gap-2">
               <Link href={user.role === "admin" ? "/admin" : "/dashboard"}>
-                <Button size="sm" variant="ghost" data-testid="button-dashboard">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  data-testid="button-dashboard"
+                >
                   <LayoutDashboard className="w-4 h-4 mr-1.5" />
                   {user.role === "admin" ? "Admin" : "Dashboard"}
                 </Button>
               </Link>
               <Link href={user.role === "admin" ? "/admin" : "/dashboard"}>
-                <Avatar className="w-8 h-8 cursor-pointer" data-testid="avatar-user">
+                <Avatar
+                  className="w-8 h-8 cursor-pointer"
+                  data-testid="avatar-user"
+                >
                   <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                     {user.avatarInitials || user.name[0]}
                   </AvatarFallback>
@@ -151,13 +170,19 @@ export default function Navbar() {
                     </div>
                     <span className="font-display font-bold">AI DSA</span>
                   </div>
-                  <Button size="icon" variant="ghost" onClick={() => setOpen(false)} data-testid="button-close-menu">
+                  <Button
+                    aria-label="Close menu"
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => setOpen(false)}
+                    data-testid="button-close-menu"
+                  >
                     <X className="w-5 h-5" />
                   </Button>
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  {navLinks.map((link) => (
+                  {navLinks.map((link) =>
                     link.href.startsWith("#") ? (
                       <a
                         key={link.href}
@@ -178,15 +203,22 @@ export default function Navbar() {
                       >
                         {link.label}
                       </Link>
-                    )
-                  ))}
+                    ),
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-2 pt-6 mt-6 border-t">
                   {user ? (
                     <>
-                      <Link href={user.role === "admin" ? "/admin" : "/dashboard"} onClick={() => setOpen(false)}>
-                        <Button variant="ghost" className="w-full justify-start" data-testid="mobile-button-dashboard">
+                      <Link
+                        href={user.role === "admin" ? "/admin" : "/dashboard"}
+                        onClick={() => setOpen(false)}
+                      >
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-start"
+                          data-testid="mobile-button-dashboard"
+                        >
                           <LayoutDashboard className="w-4 h-4 mr-2" />
                           {user.role === "admin" ? "Admin Panel" : "Dashboard"}
                         </Button>
@@ -208,12 +240,21 @@ export default function Navbar() {
                   ) : (
                     <>
                       <Link href="/auth" onClick={() => setOpen(false)}>
-                        <Button variant="ghost" className="w-full" data-testid="mobile-button-login">
+                        <Button
+                          variant="ghost"
+                          className="w-full"
+                          data-testid="mobile-button-login"
+                        >
                           Log In
                         </Button>
                       </Link>
                       <Link href="/auth" onClick={() => setOpen(false)}>
-                        <Button className="w-full" data-testid="mobile-button-signup">Sign Up</Button>
+                        <Button
+                          className="w-full"
+                          data-testid="mobile-button-signup"
+                        >
+                          Sign Up
+                        </Button>
                       </Link>
                     </>
                   )}
