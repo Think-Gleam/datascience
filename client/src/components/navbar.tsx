@@ -86,6 +86,7 @@ export default function Navbar() {
             variant="ghost"
             onClick={toggleTheme}
             className={scrolled || !isHome ? "" : "text-white"}
+            aria-label="Toggle theme"
             data-testid="button-theme-toggle"
           >
             {theme === "dark" ? (
@@ -137,6 +138,7 @@ export default function Navbar() {
                 size="icon"
                 variant="ghost"
                 className={`xl:hidden ${scrolled || !isHome ? "" : "text-white"}`}
+                aria-label="Open menu"
                 data-testid="button-mobile-menu"
               >
                 <Menu className="w-5 h-5" />
@@ -151,7 +153,7 @@ export default function Navbar() {
                     </div>
                     <span className="font-display font-bold">AI DSA</span>
                   </div>
-                  <Button size="icon" variant="ghost" onClick={() => setOpen(false)} data-testid="button-close-menu">
+                  <Button size="icon" variant="ghost" onClick={() => setOpen(false)} aria-label="Close menu" data-testid="button-close-menu">
                     <X className="w-5 h-5" />
                   </Button>
                 </div>
