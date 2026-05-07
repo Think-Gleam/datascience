@@ -46,15 +46,37 @@ export default function Dashboard() {
     return null;
   }
 
-  const activeCount = enrollments?.filter((e) => e.status === "active").length ?? 0;
-  const completedCount = enrollments?.filter((e) => e.status === "completed").length ?? 0;
+  const activeCount =
+    enrollments?.filter((e) => e.status === "active").length ?? 0;
+  const completedCount =
+    enrollments?.filter((e) => e.status === "completed").length ?? 0;
   const certCount = certs?.length ?? 0;
 
   const stats = [
-    { label: "Enrolled Courses", value: enrollments?.length ?? 0, icon: BookOpen, color: "text-blue-500" },
-    { label: "Completed", value: completedCount, icon: GraduationCap, color: "text-emerald-500" },
-    { label: "Certificates", value: certCount, icon: Award, color: "text-amber-500" },
-    { label: "In Progress", value: activeCount, icon: TrendingUp, color: "text-purple-500" },
+    {
+      label: "Enrolled Courses",
+      value: enrollments?.length ?? 0,
+      icon: BookOpen,
+      color: "text-blue-500",
+    },
+    {
+      label: "Completed",
+      value: completedCount,
+      icon: GraduationCap,
+      color: "text-emerald-500",
+    },
+    {
+      label: "Certificates",
+      value: certCount,
+      icon: Award,
+      color: "text-amber-500",
+    },
+    {
+      label: "In Progress",
+      value: activeCount,
+      icon: TrendingUp,
+      color: "text-purple-500",
+    },
   ];
 
   return (
@@ -92,7 +114,9 @@ export default function Dashboard() {
             </Avatar>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium truncate">{user.name}</div>
-              <div className="text-xs text-muted-foreground truncate">{user.email}</div>
+              <div className="text-xs text-muted-foreground truncate">
+                {user.email}
+              </div>
             </div>
           </div>
           <Button
@@ -115,10 +139,15 @@ export default function Dashboard() {
         <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-xl border-b px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl font-display font-bold" data-testid="text-dashboard-title">
+              <h1
+                className="text-xl font-display font-bold"
+                data-testid="text-dashboard-title"
+              >
                 Welcome back, {user.name.split(" ")[0]}
               </h1>
-              <p className="text-sm text-muted-foreground">Continue your learning journey</p>
+              <p className="text-sm text-muted-foreground">
+                Continue your learning journey
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <Link href="/courses">
@@ -130,6 +159,7 @@ export default function Dashboard() {
                 <Button
                   variant="ghost"
                   size="sm"
+                  aria-label="Log out"
                   onClick={async () => {
                     await logout();
                     setLocation("/");
@@ -145,13 +175,20 @@ export default function Dashboard() {
         <div className="p-6 max-w-6xl mx-auto space-y-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {stats.map((stat) => (
-              <Card key={stat.label} data-testid={`stat-card-${stat.label.toLowerCase().replace(/\s/g, "-")}`}>
+              <Card
+                key={stat.label}
+                data-testid={`stat-card-${stat.label.toLowerCase().replace(/\s/g, "-")}`}
+              >
                 <CardContent className="p-5">
                   <div className="flex items-center justify-between mb-3">
                     <stat.icon className={`w-5 h-5 ${stat.color}`} />
                   </div>
-                  <div className="text-2xl font-display font-bold">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                  <div className="text-2xl font-display font-bold">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {stat.label}
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -159,7 +196,9 @@ export default function Dashboard() {
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-display font-semibold">Continue Learning</h2>
+              <h2 className="text-lg font-display font-semibold">
+                Continue Learning
+              </h2>
               <Link href="/courses">
                 <Button variant="ghost" size="sm">
                   View All <ChevronRight className="w-4 h-4 ml-1" />
@@ -212,10 +251,17 @@ export default function Dashboard() {
                             {enrollment.course.difficulty}
                           </Badge>
                         </div>
-                        <Progress value={enrollment.progress} className="h-1.5 mb-3" />
+                        <Progress
+                          value={enrollment.progress}
+                          className="h-1.5 mb-3"
+                        />
 
                         <Link href={`/course/${enrollment.course.id}/learn`}>
-                          <Button size="sm" className="w-full" data-testid={`button-resume-${enrollment.course.id}`}>
+                          <Button
+                            size="sm"
+                            className="w-full"
+                            data-testid={`button-resume-${enrollment.course.id}`}
+                          >
                             <Play className="w-3.5 h-3.5 mr-1.5" />
                             Resume Learning
                           </Button>
@@ -233,7 +279,9 @@ export default function Dashboard() {
                     Browse our catalog and enroll in your first course.
                   </p>
                   <Link href="/courses">
-                    <Button data-testid="button-browse-empty">Browse Courses</Button>
+                    <Button data-testid="button-browse-empty">
+                      Browse Courses
+                    </Button>
                   </Link>
                 </CardContent>
               </Card>
@@ -242,16 +290,24 @@ export default function Dashboard() {
 
           {certs && certs.length > 0 && (
             <div>
-              <h2 className="text-lg font-display font-semibold mb-4">Certificates</h2>
+              <h2 className="text-lg font-display font-semibold mb-4">
+                Certificates
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {certs.map((cert: any) => (
-                  <Card key={cert.id} className="hover-elevate" data-testid={`card-certificate-${cert.id}`}>
+                  <Card
+                    key={cert.id}
+                    className="hover-elevate"
+                    data-testid={`card-certificate-${cert.id}`}
+                  >
                     <CardContent className="p-5 flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                         <Award className="w-6 h-6 text-amber-500" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sm truncate">{cert.course.title}</h3>
+                        <h3 className="font-semibold text-sm truncate">
+                          {cert.course.title}
+                        </h3>
                         <p className="text-xs text-muted-foreground">
                           Issued {new Date(cert.issuedAt).toLocaleDateString()}
                         </p>
