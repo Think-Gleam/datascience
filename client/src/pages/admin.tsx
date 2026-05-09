@@ -347,6 +347,7 @@ export default function AdminPanel() {
                               <Button
                                 variant="ghost"
                                 size="icon"
+                                aria-label="Edit course"
                                 onClick={() => {
                                   setEditingCourse(course);
                                   setCourseDialogOpen(true);
@@ -358,6 +359,7 @@ export default function AdminPanel() {
                               <Button
                                 variant="ghost"
                                 size="icon"
+                                aria-label="Delete course"
                                 onClick={() => {
                                   if (confirm("Delete this course?")) {
                                     deleteCourseMutation.mutate(course.id);
