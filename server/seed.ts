@@ -1,16 +1,7 @@
 import { db } from "./db";
 import { users, courses, modules, lessons } from "@shared/schema";
-import { scrypt, randomBytes } from "crypto";
-import { promisify } from "util";
 import { eq } from "drizzle-orm";
-
-const scryptAsync = promisify(scrypt);
-
-async function hashPassword(password: string): Promise<string> {
-  const salt = randomBytes(16).toString("hex");
-  const buf = (await scryptAsync(password, salt, 64)) as Buffer;
-  return `${buf.toString("hex")}.${salt}`;
-}
+import { hashPassword } from "./crypto";
 
 export async function seed() {
   const existingCourses = await db.select().from(courses);
