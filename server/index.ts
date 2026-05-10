@@ -49,7 +49,17 @@ app.use((req, res, next) => {
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse, (key, val) => {
+          if (
+            key &&
+            ["password", "token", "secret", "authorization"].some((k) =>
+              key.toLowerCase().includes(k)
+            )
+          ) {
+            return "[REDACTED]";
+          }
+          return val;
+        })}`;
       }
 
       log(logLine);
