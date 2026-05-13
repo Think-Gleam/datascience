@@ -29,12 +29,13 @@ export async function registerRoutes(
         return res.status(404).json({ message: "Course not found" });
       }
       const courseModules = await storage.getModules(course.id);
-      const modulesWithLessons = await Promise.all(
-        courseModules.map(async (mod) => {
-          const modLessons = await storage.getLessons(mod.id);
-          return { ...mod, lessons: modLessons };
-        })
-      );
+      const allLessons = await storage.getLessonsByCourse(course.id);
+
+      const modulesWithLessons = courseModules.map((mod) => {
+        const modLessons = allLessons.filter(lesson => lesson.moduleId === mod.id);
+        return { ...mod, lessons: modLessons };
+      });
+
       res.json({ ...course, modules: modulesWithLessons });
     } catch (err) {
       next(err);
