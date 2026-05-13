@@ -59,6 +59,7 @@ app.use((req, res, next) => {
   next();
 });
 
+if (process.env.NODE_ENV !== "test") {
 (async () => {
   const { seed } = await import("./seed");
   await seed();
@@ -104,3 +105,4 @@ app.use((req, res, next) => {
     },
   );
 })();
+}
