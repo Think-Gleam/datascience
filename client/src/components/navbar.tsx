@@ -97,6 +97,7 @@ export default function Navbar() {
             size="icon"
             variant="ghost"
             onClick={toggleTheme}
+            aria-label="Toggle theme"
             className={scrolled || !isHome ? "" : "text-white"}
             data-testid="button-theme-toggle"
             aria-label="Toggle theme"
@@ -157,6 +158,7 @@ export default function Navbar() {
                 size="icon"
                 variant="ghost"
                 className={`xl:hidden ${scrolled || !isHome ? "" : "text-white"}`}
+                aria-label="Open menu"
                 data-testid="button-mobile-menu"
                 aria-label="Toggle menu"
               >
